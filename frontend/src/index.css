@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@plugin "daisyui";
+body {
+  font-family: 'Kantumruy Pro', sans-serif;
+}
+
+@layer base {
+  button {
+    @apply border px-4 py-1 font-semibold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-500 text-white rounded;
+  }
+}
+@layer components{
+  .nav-bar{
+    @apply bg-cyan-500 flex gap-2 p-3 items-center rounded-sm mb-1 hover:bg-orange-200;
+  }
+  .header{
+    @apply hover:bg-orange-200 flex gap-2 p-3 items-center rounded-sm mb-1;
+  }
+  .koborak{
+    font-family: 'Milonga', sans-serif ;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
