@@ -2,19 +2,21 @@ const express = require('express');
 const { dbConnection } = require('./config/db');
 const dotenv = require('dotenv');
 const categoryRouter = require('./routes/category.route');
-const productRouter = require('./routes/product.route');
-const uploadRouter = require('./routes/upload.route');
+
 const upload = require('./middleware/upload.middleware');
+
+const cors = require('cors');
+
 
 //dotenv config
 dotenv.config();
 const app = express();
 
 //middleware
+app.use(cors());
 app.use(express.json());
 app.use('/api/category', categoryRouter);
-app.use('/api/product',productRouter);
-app.use('/api/upload', upload.single('file'), uploadRouter);
+
 
 app.get('/',(req, res) => {
     res.send("Home page")

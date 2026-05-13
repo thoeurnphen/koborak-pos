@@ -24,7 +24,7 @@ exports.getAllCategory = async (req, res) => {
 
     try {
 
-        const allData = await Category.find({});
+        const allData = await Category.find().sort({ createdAt: 1 });
         res.status(200).json({
             success: true,
             data: allData,
@@ -40,12 +40,12 @@ exports.getAllCategory = async (req, res) => {
 }
 
 exports.getCategoryById = async (req, res) => {
-  const { id }  = req.params;
+  const { id } = req.params;
   // const id = req.params.id; ( អាចប្រើប្រាស់ជំនួសបាន )
   // console.log(id);
-  try{
+  try {
     const newCategory = await Category.findById(id);
-    if(!newCategory){
+    if (!newCategory) {
       return res.status(404).json({
         success: false,
         message: `Category not found !!!`
@@ -57,13 +57,14 @@ exports.getCategoryById = async (req, res) => {
       message: `show one Category `
     })
 
-  }catch(error){
+  } catch (error) {
     res.status(500).json({
       success: false,
       message: `Error Sever ${error.message}`
     })
   }
 }
+
 
 exports.updateCategory = async (req, res) => {
   try{
